@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button {
+  width: 48%;
+  margin-right: 2%;
+  height: 35px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button:last-child {
+  margin-right: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.solid {
+  width: 100%;
+  height: 1px;
+  background-color: #efefef;
+  margin: 20px 0;
+}
+
+.layout {
+  max-width: 1200px;
+  min-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* header */
+header {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 20px 0;
 }
 
-.App-link {
-  color: #61dafb;
+/* 입력 input area  */
+.input-area {
+  padding: 30px 20px;
+  border-radius: 10px;
+  background-color: #efefef;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-area label {
+  line-height: 35px;
+}
+
+.input-area input {
+  margin-right: 50px;
+  margin-left: 3px;
+  border: 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.add-btn {
+  width: 100px;
+  height: 35px;
+  float: right;
+  border: 0;
+  border-radius: 5px;
+  background-color: rgb(27, 130, 255);
+  color: #fff;
+}
+
+/* working */
+.working, .done {
+  padding: 30px 20px;
+}
+
+.working h2, .done h2 {
+  padding-bottom: 20px;
+}
+
+.task-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vw;
+}
+
+.task-box {
+  width: calc((100% - 6vw)/4);
+  border: solid 3px rgb(27, 130, 255);
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.task-box button {
+  margin-top: 15px;
 }
