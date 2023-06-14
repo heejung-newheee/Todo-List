@@ -17,6 +17,6 @@ React 개인 과제 23.06.12 ~ 23.06.16
 # 컴포넌트
   - Header : 페이지마다 반복될 수 있는 타이틀(header) 컴포넌트 
   - InputForm : 유저의 입력값을 받아 할일 목록을 추가하는 컴포넌트 
-  - TaskList : 상태 변경/삭제가 가능한 목록 리스트 컴포넌트
+  - TaskList : 할일 목록의 상태변경/삭제가 가능한 목록 리스트 컴포넌트
 
 ![image](https://github.com/heejung-newheee/Todo-List/assets/126348461/4b0355cf-c2b5-4f82-ae6a-768cc5621631)
