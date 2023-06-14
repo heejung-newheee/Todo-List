@@ -3,19 +3,46 @@ import './App.css';
 
 function App() {
     const [task, setTask] = useState([
-        { id: 1, title: 'title', text: 'text' },
-        { id: 2, title: 'title2', text: 'text2' }
+        { id: randomID(), title: '리액트 과제입니다', text: '첫번째 과제는 todo list 만들기입니다.', isDone: false },
+        { id: randomID(), title: '리액트', text: '첫째주 공부중', isDone: false },
+        { id: randomID(), title: 'javascript', text: '프로그래밍 기초주차', isDone: true }
     ]);
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
-    const taskListAdd = () => {
-        // const taskList = {
-        //     id: task.length + 1,
-        //     title,
-        //     text
-        // };
-        // setTask([...task], taskList);
+
+    // 추가버튼
+    const clickAddTask = () => {
+        const addTaskList = {
+            id: randomID(),
+            title,
+            text,
+            isDone: false
+        };
+        setTask([...task, addTaskList]);
+        setTitle('');
+        setText('');
     };
+    // 삭제버튼
+    const clickDelete = (id) => {
+        console.log(id);
+        const newTask = task.filter((task) => {
+            return task.id !== id;
+        });
+        setTask(newTask);
+        console.log(task);
+    };
+    //상태변경
+    const clickCompleteToggle = (id) => {
+        console.log(id);
+        const newArr = task.map((item) => (item.id === id ? { ...item, isDone: !item.isDone } : item));
+        setTask(newArr);
+    };
+
+    //랜덤아이디
+    function randomID() {
+        return '_' + Math.random().toString(36).substr(2, 9);
+    }
+
     return (
         <div className="layout">
             <header>
@@ -24,7 +51,7 @@ function App() {
             </header>
 
             <div className="input-area">
-                <label for="task-title">제목 </label>
+                <label>제목 </label>
                 <input
                     type="text"
                     id="task-title"
@@ -33,7 +60,7 @@ function App() {
                         setTitle(event.target.value);
                     }}
                 />
-                <label for="task-text">내용 </label>
+                <label>내용 </label>
                 <input
                     type="text"
                     id="task-text"
@@ -42,7 +69,7 @@ function App() {
                         setText(event.target.value);
                     }}
                 />
-                <button className="add-btn" onClick={taskListAdd}>
+                <button className="add-btn" onClick={clickAddTask}>
                     추가하기
                 </button>
             </div>
@@ -50,48 +77,40 @@ function App() {
             <div className="working">
                 <h2>Working</h2>
                 <div className="task-wrap">
-                    <div className="task-box">
-                        <h3>title</h3>
-                        <p>text</p>
-                        <button>삭제</button>
-                        <button>완료</button>
-                    </div>
-                    <div className="task-box">
-                        <h3>title</h3>
-                        <p>text</p>
-                        <button>삭제</button>
-                        <button>완료</button>
-                    </div>
-                    <div className="task-box">
-                        <h3>title</h3>
-                        <p>text</p>
-                        <button>삭제</button>
-                        <button>완료</button>
-                    </div>
-                    <div className="task-box">
-                        <h3>title</h3>
-                        <p>text</p>
-                        <button>삭제</button>
-                        <button>완료</button>
-                    </div>
-                    <div className="task-box">
-                        <h3>title</h3>
-                        <p>text</p>
-                        <button>삭제</button>
-                        <button>완료</button>
-                    </div>
+                    {task
+                        .filter((item) => {
+                            return item.isDone === false;
+                        })
+                        .map((item) => {
+                            return (
+                                <div key={item.id} id={item.id} className="task-box">
+                                    <h3>{item.title}</h3>
+                                    <p>{item.text}</p>
+                                    <button onClick={() => clickDelete(item.id)}>삭제</button>
+                                    <button onClick={() => clickCompleteToggle(item.id)}>완료</button>
+                                </div>
+                            );
+                        })}
                 </div>
             </div>
             <div className="solid"></div>
             <div className="done">
                 <h2>Done</h2>
                 <div className="task-wrap">
-                    <div className="task-box">
-                        <h3>title</h3>
-                        <p>contents</p>
-                        <button>삭제</button>
-                        <button>취소</button>
-                    </div>
+                    {task
+                        .filter((item) => {
+                            return item.isDone === true;
+                        })
+                        .map((item) => {
+                            return (
+                                <div key={item.id} className="task-box">
+                                    <h3>{item.title}</h3>
+                                    <p>{item.text}</p>
+                                    <button onClick={() => clickDelete(item.id)}>삭제</button>
+                                    <button onClick={() => clickCompleteToggle(item.id)}>취소</button>
+                                </div>
+                            );
+                        })}
                 </div>
             </div>
         </div>
