@@ -8,6 +8,8 @@ button {
   width: 48%;
   margin-right: 2%;
   height: 35px;
+  cursor: pointer;
+  border: 0;
 }
 
 button:last-child {
@@ -63,8 +65,12 @@ header {
   float: right;
   border: 0;
   border-radius: 5px;
-  background-color: rgb(27, 130, 255);
+  background-color: rgb(13, 173, 198);
   color: #fff;
+}
+
+.add-btn:hover {
+  font-weight: bold;
 }
 
 /* working */
@@ -76,6 +82,11 @@ header {
   padding-bottom: 20px;
 }
 
+.working h3, .done h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
 .task-wrap {
   display: flex;
   flex-wrap: wrap;
@@ -84,11 +95,52 @@ header {
 
 .task-box {
   width: calc((100% - 6vw)/4);
-  border: solid 3px rgb(27, 130, 255);
+  border: solid 3px rgb(162, 162, 162);
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.task-box h3, .task-box p {
+  width: 100%;
+}
+
+.task-box p {
+  height: 3rem;
 }
 
 .task-box button {
-  margin-top: 15px;
+  margin-top: 18px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: solid 1px #ddd;
+  align-items: flex-end;
+  transition: all 0.3s;
+}
+
+.working .task-box button:hover {
+  border-color: rgb(13, 173, 198);
+  background-color: rgb(13, 173, 198);
+  color: #fff;
+}
+
+.del {
+  color: rgb(249 64 63);
+}
+
+.working .task-box .del:hover, .done .task-box .del:hover {
+  background-color: rgb(249 64 63);
+  border: rgb(249 64 63);
+  color: #fff;
+}
+
+.done .task-box {
+  border-color: rgb(13, 173, 198);
+}
+
+.done .task-box .cancel:hover {
+  background-color: rgb(162, 162, 162);
+  color: #fff;
+  border-color: rgb(162, 162, 162);
 }

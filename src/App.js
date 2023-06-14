@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Header from 'components/Header';
+import TaskList from 'components/TaskList';
 import './App.css';
 
 function App() {
@@ -22,33 +24,17 @@ function App() {
         setTitle('');
         setText('');
     };
-    // 삭제버튼
-    const clickDelete = (id) => {
-        console.log(id);
-        const newTask = task.filter((task) => {
-            return task.id !== id;
-        });
-        setTask(newTask);
-        console.log(task);
-    };
-    //상태변경
-    const clickCompleteToggle = (id) => {
-        console.log(id);
-        const newArr = task.map((item) => (item.id === id ? { ...item, isDone: !item.isDone } : item));
-        setTask(newArr);
-    };
 
     //랜덤아이디
     function randomID() {
         return '_' + Math.random().toString(36).substr(2, 9);
     }
 
+    console.log(task);
+
     return (
         <div className="layout">
-            <header>
-                <span>My Todo List</span>
-                <span>React</span>
-            </header>
+            <Header />
 
             <div className="input-area">
                 <label>제목 </label>
@@ -82,14 +68,7 @@ function App() {
                             return item.isDone === false;
                         })
                         .map((item) => {
-                            return (
-                                <div key={item.id} id={item.id} className="task-box">
-                                    <h3>{item.title}</h3>
-                                    <p>{item.text}</p>
-                                    <button onClick={() => clickDelete(item.id)}>삭제</button>
-                                    <button onClick={() => clickCompleteToggle(item.id)}>완료</button>
-                                </div>
-                            );
+                            return <TaskList key={item.id} item={item} task={task} setTask={setTask} />;
                         })}
                 </div>
             </div>
@@ -102,14 +81,7 @@ function App() {
                             return item.isDone === true;
                         })
                         .map((item) => {
-                            return (
-                                <div key={item.id} className="task-box">
-                                    <h3>{item.title}</h3>
-                                    <p>{item.text}</p>
-                                    <button onClick={() => clickDelete(item.id)}>삭제</button>
-                                    <button onClick={() => clickCompleteToggle(item.id)}>취소</button>
-                                </div>
-                            );
+                            return <TaskList key={item.id} item={item} task={task} setTask={setTask} />;
                         })}
                 </div>
             </div>
