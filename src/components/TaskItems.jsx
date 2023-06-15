@@ -1,17 +1,17 @@
 import React from 'react';
 
-function TaskList({ item, task, setTask }) {
-    // 삭제버튼
+function TaskItems({ item, task, setTask }) {
     const clickDelete = (id) => {
         const newTask = task.filter((task) => {
             return task.id !== id;
         });
         setTask(newTask);
+        localStorage.setItem('todoItems', JSON.stringify(newTask));
     };
-    //상태변경
     const clickCompleteToggle = (id) => {
         const newArr = task.map((item) => (item.id === id ? { ...item, isDone: !item.isDone } : item));
         setTask(newArr);
+        localStorage.setItem('todoItems', JSON.stringify(newArr));
     };
     return (
         <div key={item.id} className="task-box">
@@ -25,4 +25,4 @@ function TaskList({ item, task, setTask }) {
     );
 }
 
-export default TaskList;
+export default TaskItems;
