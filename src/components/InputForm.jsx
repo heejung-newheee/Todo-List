@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function InputForm({ task, setTask }) {
     const [title, setTitle] = useState('');
@@ -10,6 +10,9 @@ function InputForm({ task, setTask }) {
     const textChangeHandler = (event) => {
         setText(event.target.value);
     };
+    // useEffect(() => {
+    //     localStorage.setItem('todoItems', JSON.stringify(task));
+    // }, []);
 
     // 추가버튼
     const clickAddTask = () => {
@@ -20,6 +23,7 @@ function InputForm({ task, setTask }) {
             isDone: false
         };
         setTask([...task, addTaskList]);
+        localStorage.setItem('todoItems', JSON.stringify(task));
         setTitle('');
         setText('');
     };
