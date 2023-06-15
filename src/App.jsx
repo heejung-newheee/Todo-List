@@ -6,14 +6,7 @@ import TaskList from 'components/TaskList';
 import './App.css';
 
 function App(randomID = { randomID }) {
-    const [task, setTask] = useState([
-        // {
-        //     id: 0,
-        //     title: '리액트 과제',
-        //     text: '리액트 todo list 만들기',
-        //     isDone: false
-        // }
-    ]);
+    const [task, setTask] = useState([]);
 
     useEffect(() => {
         const localData = localStorage.getItem('todoItems');

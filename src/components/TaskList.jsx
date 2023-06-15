@@ -7,11 +7,13 @@ function TaskList({ item, task, setTask }) {
             return task.id !== id;
         });
         setTask(newTask);
+        // localStorage.removeItem('todoItems', JSON.stringify());
     };
     //상태변경
     const clickCompleteToggle = (id) => {
         const newArr = task.map((item) => (item.id === id ? { ...item, isDone: !item.isDone } : item));
         setTask(newArr);
+        localStorage.setItem('todoItems', JSON.stringify(newArr));
     };
     return (
         <div key={item.id} className="task-box">
