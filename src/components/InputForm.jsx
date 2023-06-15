@@ -3,21 +3,15 @@ import React, { useState } from 'react';
 function InputForm({ task, setTask }) {
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
-    // title change
     const titleChangeHandler = (event) => {
         setTitle(event.target.value);
     };
-    // text change
     const textChangeHandler = (event) => {
         setText(event.target.value);
     };
-
-    //랜덤아이디
     const randomID = () => {
         return '_' + Math.random().toString(36).substr(2, 9);
     };
-
-    // 추가버튼
     const clickAddTask = () => {
         const addTaskList = {
             id: randomID(),
@@ -31,7 +25,6 @@ function InputForm({ task, setTask }) {
         setTitle('');
         setText('');
     };
-
     return (
         <div className="input-area">
             <label>제목 </label>

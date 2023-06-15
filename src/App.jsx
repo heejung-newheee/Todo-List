@@ -22,7 +22,6 @@ function App(randomID = { randomID }) {
             setTask(task);
         }
     }, []);
-
     return (
         <Layout>
             <Header />

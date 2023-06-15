@@ -1,7 +1,6 @@
 import React from 'react';
 
 function TaskItems({ item, task, setTask }) {
-    // 삭제버튼
     const clickDelete = (id) => {
         const newTask = task.filter((task) => {
             return task.id !== id;
@@ -9,7 +8,6 @@ function TaskItems({ item, task, setTask }) {
         setTask(newTask);
         localStorage.setItem('todoItems', JSON.stringify(newTask));
     };
-    //상태변경
     const clickCompleteToggle = (id) => {
         const newArr = task.map((item) => (item.id === id ? { ...item, isDone: !item.isDone } : item));
         setTask(newArr);

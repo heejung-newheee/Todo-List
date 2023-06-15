@@ -4,7 +4,6 @@ import TaskItems from './TaskItems';
 function Main({ task, setTask }) {
     return (
         <>
-            {/* working */}
             <div className="working">
                 <h2>Working</h2>
                 <div className="task-wrap">
@@ -17,9 +16,7 @@ function Main({ task, setTask }) {
                         })}
                 </div>
             </div>
-
             <div className="solid"></div>
-            {/* done  */}
             <div className="done">
                 <h2>Done</h2>
                 <div className="task-wrap">
