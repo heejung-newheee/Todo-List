@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 function InputForm({ task, setTask }) {
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
-
+    // title change
     const titleChangeHandler = (event) => {
         setTitle(event.target.value);
     };
+    // text change
     const textChangeHandler = (event) => {
         setText(event.target.value);
     };
