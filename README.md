@@ -14,6 +14,7 @@ localstorage를 사용해서 추가/수정/삭제/새로고침 시 데이터가 
   - Todo 추가
   - Todo 삭제
   - Todo 완료 상태 변경 (완료 ↔ 진행)
+  - localstorage로 화면값 유지
 
 # 컴포넌트
   - Layout : 페이지 전체 컨텐츠를 감싸고 있는 레이아웃 컴포넌트
