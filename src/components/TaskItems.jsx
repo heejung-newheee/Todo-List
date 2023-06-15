@@ -1,13 +1,13 @@
 import React from 'react';
 
-function TaskList({ item, task, setTask }) {
+function TaskItems({ item, task, setTask }) {
     // 삭제버튼
     const clickDelete = (id) => {
         const newTask = task.filter((task) => {
             return task.id !== id;
         });
         setTask(newTask);
-        // localStorage.removeItem('todoItems', JSON.stringify());
+        localStorage.setItem('todoItems', JSON.stringify(newTask));
     };
     //상태변경
     const clickCompleteToggle = (id) => {
@@ -27,4 +27,4 @@ function TaskList({ item, task, setTask }) {
     );
 }
 
-export default TaskList;
+export default TaskItems;

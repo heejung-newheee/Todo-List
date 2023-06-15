@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 function InputForm({ task, setTask }) {
     const [title, setTitle] = useState('');
@@ -9,6 +9,11 @@ function InputForm({ task, setTask }) {
     };
     const textChangeHandler = (event) => {
         setText(event.target.value);
+    };
+
+    //랜덤아이디
+    const randomID = () => {
+        return '_' + Math.random().toString(36).substr(2, 9);
     };
 
     // 추가버튼
@@ -26,10 +31,6 @@ function InputForm({ task, setTask }) {
         setText('');
     };
 
-    //랜덤아이디
-    function randomID() {
-        return '_' + Math.random().toString(36).substr(2, 9);
-    }
     return (
         <div className="input-area">
             <label>제목 </label>
