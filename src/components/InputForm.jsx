@@ -3,12 +3,18 @@ import React, { useState } from 'react';
 function InputForm({ task, setTask }) {
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
-
+    // title change
     const titleChangeHandler = (event) => {
         setTitle(event.target.value);
     };
+    // text change
     const textChangeHandler = (event) => {
         setText(event.target.value);
+    };
+
+    //랜덤아이디
+    const randomID = () => {
+        return '_' + Math.random().toString(36).substr(2, 9);
     };
 
     // 추가버튼
@@ -19,15 +25,13 @@ function InputForm({ task, setTask }) {
             text,
             isDone: false
         };
-        setTask([...task, addTaskList]);
+        const newArr = [...task, addTaskList];
+        setTask(newArr);
+        localStorage.setItem('todoItems', JSON.stringify(newArr));
         setTitle('');
         setText('');
     };
 
-    //랜덤아이디
-    function randomID() {
-        return '_' + Math.random().toString(36).substr(2, 9);
-    }
     return (
         <div className="input-area">
             <label>제목 </label>
