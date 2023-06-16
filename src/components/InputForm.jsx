@@ -12,28 +12,38 @@ function InputForm({ task, setTask }) {
     const randomID = () => {
         return '_' + Math.random().toString(36).substr(2, 9);
     };
-    const clickAddTask = () => {
+    const clickAddTask = (e) => {
         const addTaskList = {
             id: randomID(),
             title,
             text,
             isDone: false
         };
-        const newArr = [...task, addTaskList];
-        setTask(newArr);
-        localStorage.setItem('todoItems', JSON.stringify(newArr));
-        setTitle('');
-        setText('');
+        if (!title) {
+            e.preventDefault();
+            alert('제목을 입력해 주세요');
+        } else if (!text) {
+            e.preventDefault();
+            alert('내용을 입력해 주세요');
+        } else {
+            const newArr = [...task, addTaskList];
+            setTask(newArr);
+            localStorage.setItem('todoItems', JSON.stringify(newArr));
+            setTitle('');
+            setText('');
+        }
     };
     return (
         <div className="input-area">
-            <label>제목 </label>
-            <input type="text" id="task-title" value={title} onChange={titleChangeHandler} />
-            <label>내용 </label>
-            <input type="text" id="task-text" value={text} onChange={textChangeHandler} />
-            <button className="add-btn" onClick={clickAddTask}>
-                추가하기
-            </button>
+            <form>
+                <label>제목 </label>
+                <input type="text" id="task-title" value={title} onChange={titleChangeHandler} />
+                <label>내용 </label>
+                <input type="text" id="task-text" value={text} onChange={textChangeHandler} />
+                <button type="submit" className="add-btn" onClick={clickAddTask}>
+                    추가하기
+                </button>
+            </form>
         </div>
     );
 }
