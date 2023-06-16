@@ -1,7 +1,7 @@
 import React from 'react';
 import TaskItems from './TaskItems';
 
-function Main({ task, setTask }) {
+function TaskBoard({ task, setTask }) {
     return (
         <>
             <div className="working">
@@ -33,4 +33,4 @@ function Main({ task, setTask }) {
     );
 }
 
-export default Main;
+export default TaskBoard;

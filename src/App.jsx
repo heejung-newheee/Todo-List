@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Layout from 'components/Layout';
 import Header from 'components/Header';
 import InputForm from 'components/InputForm';
-import Main from 'components/Main';
+import TaskBoard from 'components/TaskBoard';
 import './App.css';
 
 function App(randomID = { randomID }) {
@@ -26,7 +26,7 @@ function App(randomID = { randomID }) {
         <Layout>
             <Header />
             <InputForm task={task} setTask={setTask} />
-            <Main task={task} setTask={setTask} />
+            <TaskBoard task={task} setTask={setTask} />
         </Layout>
     );
 }
